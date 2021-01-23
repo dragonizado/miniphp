@@ -1,0 +1,13 @@
+<?php
+
+return [
+    "app_name"=>"%1$s",
+    "db_host"=>"%2$s",
+    "db_name"=>"%3$s",
+    "db_username"=>"%4$s",
+    "db_password"=>"%5$s",
+    "db_encode"=>"utf8",
+];
+
+
+?>
