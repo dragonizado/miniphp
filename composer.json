@@ -1,0 +1,11 @@
+{
+    "name": "dragonizado/miniphp",
+    "description": "Encarpetado para inicar un nuevo proyecto con php de forma rapida",
+    "authors": [
+        {
+            "name": "Jesus Francisco",
+            "email": "jesusfrancisco@hotmail.es"
+        }
+    ],
+    "require": {}
+}

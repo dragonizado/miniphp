@@ -48,10 +48,10 @@
         <h1 style="text-align: center;">Configurar la base de datos</h1>
     </div>
     <?php
-    if (!is_null($mensajes)) {
-        echo "<p>$mensajes</p>";
-        $mensajes = null;
-    }
+        if (!is_null($mensajes)) {
+            echo "<p>$mensajes</p>";
+            $mensajes = null;
+        }
     ?>
 
     <center>
