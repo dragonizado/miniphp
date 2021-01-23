@@ -6,6 +6,7 @@ class Install
     public function __construct(){
         $this->dg_path =  dirname(__DIR__)."/vendor/dg/";
        $this->install();
+       exit();
     }
 
     public function install(){
@@ -17,13 +18,14 @@ class Install
             $db_username = $_POST['db_username'];
             $db_password = $_POST['db_password'];
 
-            if($this->checkDBConection($db_host,$db_name,$db_username,$db_password)){
-
+            try {
+                $this->checkDBConection($db_host,$db_name,$db_username,$db_password);
                 $this->createConfigFile($db_host, $db_name,$db_username,$db_password,$app_name);
                 header("location: /");
-            }else{
-                 $mensajes = "No se puede conectar a la base de datos";
+            } catch (Exception $th) {
+                $mensajes = $th->getMessage();
             }
+            
         }
         include dirname(__file__)."/views/index.php";
     }
@@ -33,7 +35,7 @@ class Install
         try {
             return new PDO("mysql:host=$host;dbname=$db_name;charset=utf8",$username,$password,$db_params);
         } catch (PDOException $th) {
-            exit("Error al conectar con la db: ".$th->getMessage());
+            throw new Exception("Error al conectar con la db: " . $th->getMessage(), 1);
         }
     }
 

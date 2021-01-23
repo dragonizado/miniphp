@@ -5,7 +5,7 @@ define('APP',ROOT."app".DIRECTORY_SEPARATOR);
 
 
 if(file_exists(ROOT."vendor/autoload.php")){
-    define(LOADCLASICCLASS,false);
+    define("LOADCLASICCLASS",false);
     require ROOT."vendor/autoload.php";
 }
 
