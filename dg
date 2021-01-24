@@ -6,6 +6,6 @@ require "./app/class/DgConsole.php";
 
 // parse_str(implode('&',array_slice($argv,1)),$_GET);
 
-new DgConsole($argv);
+new \App\Dgclass\DgConsole($argv);
 
 ?>

@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Dgclass;
+
 class DgConsole{
     protected $app_path;
     protected $dg_path;
@@ -21,7 +23,14 @@ class DgConsole{
                 }else{
                     exit("No se ha definido el nombre del controlador");
                 }
-                break;
+            break;
+            case 'make:view':
+                if (!is_null($param)) {
+                    $this->generateView($param);
+                } else {
+                    exit("No se ha definido el nombre del controlador");
+                }
+            break;
             
             default:
                 $this->showConsoleHelp();
@@ -54,6 +63,23 @@ class DgConsole{
 
     }
     public function generateView($name){
+        $views_path = $this->cleanPath($this->app_path . "views/");
+        $views_name = $name;
+        $file_name = $views_path.$views_name.".php";
+
+        if (!file_exists($file_name)) {
+            if ($handler = fopen($file_name, "a")) {
+                $view_content = file_get_contents($this->cleanPath($this->dg_path . "templates/views/full.html"));
+                fwrite($handler, $view_content);
+                fclose($handler);
+                exit("Se ha creado la vista correctamente");
+            } else {
+                exit("Error al crear la vista");
+            }
+        } else {
+            echo "la vista ya existe $name ya existe";
+            exit();
+        }
 
     }
 

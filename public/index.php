@@ -1,4 +1,7 @@
 <?php
+/*
+* Dragonizado 2021
+*/
 
 define('ROOT',dirname(__DIR__). DIRECTORY_SEPARATOR);
 define('APP',ROOT."app".DIRECTORY_SEPARATOR);
@@ -19,11 +22,16 @@ if(is_dir(APP."install")){
 
 }
 
+$config = require APP."config/config.php";
+require APP. "config/defines.php";
+
+
+
 require APP."class/App.php";
 require APP."class/Controllers.php";
 require APP."class/Models.php";
 
 
-new App();
+new \App\Dgclass\App();
 
 ?>

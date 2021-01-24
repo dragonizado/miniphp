@@ -1,4 +1,5 @@
 <?php
+namespace App\Dgclass;
 
 class Models
 {
@@ -9,7 +10,7 @@ class Models
 
     public function connectToDb(){
         $dbParams = [];
-        $this->db = new PDO("","","",$dbParams);
+        $this->db = new \PDO("","","",$dbParams);
     }
 }
 

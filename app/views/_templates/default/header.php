@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dg App</title>
 </head>
+
 <body>
-    <h1>Plantilla</h1>
-    <p>Esta es una plantilla de html
-    </p>
-</body>
-</html>

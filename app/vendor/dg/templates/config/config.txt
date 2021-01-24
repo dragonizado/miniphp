@@ -2,6 +2,15 @@
 
 return [
     "app_name"=>"%1$s",
+    //Elegir la carpeta de plantillas por defecto
+    "template"=>'default',
+
+    //Entorno
+    "enviroment"=>"development",
+    "public_folder"=>'public',
+    "controllers_folder"=>"controllers",
+
+    //Configuración de la base de datos
     "db_host"=>"%2$s",
     "db_name"=>"%3$s",
     "db_username"=>"%4$s",

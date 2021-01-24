@@ -1,4 +1,5 @@
 <?php
+namespace App\Dgclass;
 
 class App 
 {
@@ -15,7 +16,7 @@ class App
             $this->controller = $this->controller."Controller";
             $controller_path = $this->controllers_path.$this->controller.".php";
             if(file_exists($controller_path)){
-                require $controller_path;
+                require_once $controller_path;
                 $this->controller = new $this->controller();
                 if(!is_null($this->method)){
                     if(method_exists($this->controller,$this->method)){
@@ -43,7 +44,7 @@ class App
     private function showDefaultController(){
         if(file_exists($this->controllers_path."defaultController.php")){
             require $this->controllers_path."defaultController.php";
-            $this->controller = new defaultController();
+            $this->controller = new \App\Controllers\defaultController();
         }else{
             exit("UPS Lo sentimos el controlador por defecto no existe.");
         }
