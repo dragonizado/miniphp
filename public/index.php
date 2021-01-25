@@ -8,7 +8,7 @@ define('APP',ROOT."app".DIRECTORY_SEPARATOR);
 
 
 if(file_exists(ROOT."vendor/autoload.php")){
-    define("LOADCLASICCLASS",false);
+    // define("LOADCLASICCLASS",false);
     require ROOT."vendor/autoload.php";
 }
 
@@ -24,13 +24,6 @@ if(is_dir(APP."install")){
 
 $config = require APP."config/config.php";
 require APP. "config/defines.php";
-
-
-
-require APP."class/App.php";
-require APP."class/Controllers.php";
-require APP."class/Models.php";
-
 
 new \App\Dgclass\App();
 

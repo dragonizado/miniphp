@@ -17,7 +17,8 @@ class App
             $controller_path = $this->controllers_path.$this->controller.".php";
             if(file_exists($controller_path)){
                 require_once $controller_path;
-                $this->controller = new $this->controller();
+                $called_controller = "\\App\\Controllers\\".$this->controller;
+                $this->controller = new $called_controller();
                 if(!is_null($this->method)){
                     if(method_exists($this->controller,$this->method)){
                         if (!empty($this->url_params)) {

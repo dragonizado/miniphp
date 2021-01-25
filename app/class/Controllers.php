@@ -3,6 +3,12 @@ namespace App\Dgclass;
 
 class Controllers
 {
+
+    public function loadModel($model_name){
+        $models = new Models();
+        return $models->load(ucfirst($model_name));
+    }
+
     public function view($view)
     {
         $folderf = '';

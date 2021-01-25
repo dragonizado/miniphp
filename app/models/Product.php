@@ -3,8 +3,7 @@ namespace App\Models;
 
 use App\Dgclass\Models;
 
-class %s extends Models{
-
+class Product extends Models{
 
 }
 

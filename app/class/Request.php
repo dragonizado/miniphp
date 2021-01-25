@@ -2,7 +2,7 @@
 namespace App\Dgclass;
 
 class Request{
-    public function input($name){
+    public static function input($name){
         return $_REQUEST[$name];
     }
 }

@@ -3,8 +3,10 @@
 namespace App\Dgclass;
 
 class DgConsole{
+
     protected $app_path;
     protected $dg_path;
+
     public function __construct($c){
         $this->app_path = $this->cleanPath(ROOT."app/");
         $this->dg_path = $this->cleanPath($this->app_path."vendor/dg/");
@@ -24,12 +26,21 @@ class DgConsole{
                     exit("No se ha definido el nombre del controlador");
                 }
             break;
+
             case 'make:view':
                 if (!is_null($param)) {
                     $this->generateView($param);
                 } else {
                     exit("No se ha definido el nombre del controlador");
                 }
+            break;
+
+            case 'make:model':
+                if (!is_null($param)) {
+                    $this->generateModel($param);
+                } else {
+                    exit("No se ha definido el nombre del Modelo");
+                }  
             break;
             
             default:
@@ -60,7 +71,21 @@ class DgConsole{
         
     }
     public function generateModel($name){
-
+        $model_path = $this->cleanPath($this->app_path."models/");
+        $file_name = $model_path.$name.".php";
+        if(!file_exists($file_name)){
+            if($handler = fopen($file_name,"a")){
+                $model_content = file_get_contents($this->cleanPath($this->dg_path."templates/models/models.txt"));
+                $model_content = sprintf($model_content, $name);
+                fwrite($handler, $model_content);
+                fclose($handler);
+                exit("El modelo se creo correctamente.");
+            }else{
+                exit("Error al crear el modelo");
+            }
+        }else{
+            exit("El modelo ya existe.");
+        }
     }
     public function generateView($name){
         $views_path = $this->cleanPath($this->app_path . "views/");
@@ -95,13 +120,13 @@ class DgConsole{
 
     private function cleanPath($path){
         return str_replace("/",DIRECTORY_SEPARATOR,$path);
-        // return $path;
     }
 
     private function showConsoleHelp(){
         echo "Comandos disponibles".PHP_EOL;
         echo "".PHP_EOL;
         echo " make:controller   se utiliza para crear un controlador ".PHP_EOL;
+        echo " make:view   se utiliza para crear una vista ".PHP_EOL;
         echo "".PHP_EOL;
         exit();
     }

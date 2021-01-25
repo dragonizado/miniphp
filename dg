@@ -4,8 +4,6 @@ define('ROOT', __DIR__ . DIRECTORY_SEPARATOR);
 
 require "./app/class/DgConsole.php";
 
-// parse_str(implode('&',array_slice($argv,1)),$_GET);
-
 new \App\Dgclass\DgConsole($argv);
 
 ?>

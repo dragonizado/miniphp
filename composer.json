@@ -7,5 +7,12 @@
             "email": "jesusfrancisco@hotmail.es"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\Dgclass\\":"app/class/",
+            "App\\Controllers\\":"app/controllers/",
+            "App\\Models\\":"app/models/"
+        }
+    }
 }
