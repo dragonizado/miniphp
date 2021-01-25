@@ -37,6 +37,10 @@ class Models
         $this->sql .= "SELECT";
     }
 
+    protected function _insertInto(){
+        $this->sql .= "INSERT INTO ";
+    }
+
     protected function _selectAll()
     {
         $this->sql .= "SELECT *";
@@ -93,6 +97,38 @@ class Models
         $query = $this->db->prepare($sql);
         $query->execute();
         return $query->fetchAll();
+    }
+
+    public function save(){
+        $props = $this->getModelPro();
+
+        $this->_insertInto();
+        $this->sql .= $this->tPlural($this->getdgclassname());
+        
+        $this->sql .= " ( ";
+        foreach($props as $key => $values){
+            if($values == end($props)){
+                $this->sql .= $key;
+            }else{
+                $this->sql .= $key.", ";
+            }
+        }
+        $this->sql .= " )";
+
+        $this->sql .= " VALUES ";
+
+        $this->sql .= "( ";
+        foreach($props as $key => $values){
+            if($values == end($props)){
+                $this->sql .=  $values;
+            }else{
+                $this->sql .=  $values.", ";
+            }
+        }
+        $this->sql .= " );";
+
+
+        exit($this->sql);
     }
 
     public function findAll(){
