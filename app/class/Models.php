@@ -120,15 +120,21 @@ class Models
         $this->sql .= "( ";
         foreach($props as $key => $values){
             if($values == end($props)){
-                $this->sql .=  $values;
+                $this->sql .=  ":".$key;
             }else{
-                $this->sql .=  $values.", ";
+                
+                $this->sql .=  ":" . $key.", ";
             }
         }
         $this->sql .= " );";
 
+        $params = [];
+        foreach ($props as $key => $value) {
+            $params[":" . $key] = $value;
+        }
 
-        exit($this->sql);
+        $query = $this->db->prepare($this->sql);
+        return $query->execute($params);
     }
 
     public function findAll(){
@@ -137,6 +143,10 @@ class Models
         $query = $this->db->prepare($sql);
         $query->execute();
         return $query->fetchAll();
+    }
+
+    private function getModelPro(){
+        return array_slice(get_object_vars($this),3);
     }
 
     private function getdgclassname(){
